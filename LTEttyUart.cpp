@@ -14,6 +14,7 @@ LTEttyUart::~LTEttyUart()
 int LTEttyUart::LTEttyUartInit(int speed, int databits, int stopbits, int parity , const char *path)
 {
     m_ttyfd = open(path, O_RDWR | O_NOCTTY);
+
     if(-1 == m_ttyfd) {
         /* 不能打开串口一*/
         perror(" 提示错误！");
@@ -173,6 +174,7 @@ int LTEttyUart::ReadOneData(char *rcvbuf, int sec, int usec)
             return rcvsize;
         }
     }
+	return 0;
 }
 int LTEttyUart::SendOneData(char *buf, int len)
 {
